@@ -1,0 +1,65 @@
+\begin{figure}[H]
+\centering
+\begin{footnotesize}
+\begin{verbatim}
+                     OPTIMAL THRESHOLD COMPUTATION USING DATA VALUES
+--------------------------------------------------------------------------------
+Example month from dataset: 2000-Nov
+    Michez difference: d_t = 0.00115539
+    True recession value: R_t = 0
+Candidate threshold: τ = 0.0014
+
+1. Binary recession signal at τ:
+       S_t(τ) = 1{ d_t ≥ τ }
+   Using the data:
+       S_t(0.0014) = 1{ 0.00115539 ≥ 0.0014 } = 0
+   So the indicator does NOT signal a recession in 2000-Nov.
+
+2. Contribution to the confusion matrix for this τ:
+
+       If R_t = 1 and S_t = 1 → TP
+       If R_t = 0 and S_t = 1 → FP
+       If R_t = 1 and S_t = 0 → FN
+       If R_t = 0 and S_t = 0 → TN
+
+   Using the observed values:
+       R_t = 0,  S_t(τ) = 0  ⇒  this month contributes:   TN = 1
+
+3. Aggregating across all months t in the dataset gives:
+       TP(τ), FP(τ), FN(τ), TN(τ)
+
+   Example (illustrative structure):
+       TP(0.0014) = Σ_t 1{S_t=1, R_t=1}
+       FP(0.0014) = Σ_t 1{S_t=1, R_t=0}
+       FN(0.0014) = Σ_t 1{S_t=0, R_t=1}
+       TN(0.0014) = Σ_t 1{S_t=0, R_t=0}   ← 2000-Nov adds 1 to this count
+
+4. Accuracy metrics at τ:
+
+       Precision(τ) = TP(τ) / [TP(τ) + FP(τ)]
+       Recall(τ)    = TP(τ) / [TP(τ) + FN(τ)]
+
+   Using the dataset:
+       Precision and Recall update when all months' contributions
+       (including 2000-Nov) are summed.
+
+5. F1 score at τ:
+       F1(τ) = 2 / [ 1/Precision(τ) + 1/Recall(τ) ]
+
+   The metric increases when the threshold τ produces a good balance
+   between false alarms and missed recessions across all months.
+
+6. Optimal threshold selection:
+       τ* = argmax_τ  F1(τ)
+
+   Meaning:
+       You compute F1(τ) for every threshold candidate in the grid
+       (e.g., τ = 0.0001, 0.0002, …), and the τ with the highest F1
+       is reported as the optimal Michez threshold for that country.
+--------------------------------------------------------------------------------
+This figure illustrates the threshold-optimization equations using actual data:
+d_t = 0.00115539 and R_t = 0 for 2000-Nov.
+\end{verbatim}
+\end{footnotesize}
+\caption{Example of How Actual Data Enter the Optimal Threshold Computation}
+\end{figure}
