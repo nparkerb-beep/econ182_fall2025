@@ -1,0 +1,162 @@
+\documentclass[11pt]{article}
+\usepackage{appendix}
+\usepackage{paper} % required style file
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{float}
+
+\title{Online Appendix for:\\
+\textit{Sahm and Michez Rule Applied and Adjusted Thresholds in Germany, Finland, France, and Sweden}}
+\author{Natalie Parker Blount}
+\date{\today}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Data Description}
+
+This appendix provides additional details on all data sources, transformations, and indicator constructions used in the main text.
+
+\subsection{Unemployment and Vacancy Data}
+Monthly unemployment rates and vacancy rates were collected from national statistical agencies and the OECD. For each country, the Michez and Sahm rule indicators were computed as described below.
+
+\subsection{Recession Chronologies}
+Recession dates were taken from the OECD-based recession indicator series. These dates were matched to the monthly frequency of the unemployment and vacancy data.
+
+\section{Indicator Construction}
+
+\subsection{Sahm Rule Indicator}
+The Sahm Rule difference series is defined as:
+\begin{equation}
+d^{Sahm}_t = \text{MA}_3(u_t) - \min_{s \in [t-11,t]} \text{MA}_3(u_s)
+\end{equation}
+where $\text{MA}_3(u_t)$ is the three-month centered moving average of unemployment.
+
+The recession indicator is:
+\begin{equation}
+S^{Sahm}_t(\tau) = \mathbf{1}\{ d^{Sahm}_t \geq \tau \}
+\end{equation}
+
+\subsection{Michez Rule Indicator}
+For the Michez rule, the indicator uses unemployment and vacancy data:
+\begin{equation}
+d^{Michez}_t = \left( u_t - \min_{s \in [t-11,t]} u_s \right) 
+              + \left( \max_{s \in [t-11,t]} v_s - v_t \right)
+\end{equation}
+
+The binary classifier at threshold $\tau$ is:
+\begin{equation}
+S^{Michez}_t(\tau) = \mathbf{1}\{ d^{Michez}_t \geq \tau \}
+\end{equation}
+
+\section{Threshold Grid Search}
+
+To determine optimal thresholds, a complete grid search from $\tau = 0$ to $\tau = 0.01$ in increments of 0.00001 was performed.  
+For each candidate threshold, we computed the confusion matrix:
+\begin{align*}
+TP(\tau) &= \sum_t \mathbf{1}\{ S_t(\tau)=1 \ \&\ R_t=1 \} \\
+FP(\tau) &= \sum_t \mathbf{1}\{ S_t(\tau)=1 \ \&\ R_t=0 \} \\
+FN(\tau) &= \sum_t \mathbf{1}\{ S_t(\tau)=0 \ \&\ R_t=1 \} \\
+TN(\tau) &= \sum_t \mathbf{1}\{ S_t(\tau)=0 \ \&\ R_t=0 \}
+\end{align*}
+
+From these values, the following performance metrics were computed:
+
+\begin{align}
+Precision(\tau) &= \frac{TP}{TP + FP} \\
+Recall(\tau) &= \frac{TP}{TP + FN} \\
+F1(\tau) &= 2 \cdot \frac{Precision \cdot Recall}{Precision + Recall} \\
+BalancedAccuracy(\tau) &= \frac{1}{2}\left( 
+\frac{TP}{TP+FN} + \frac{TN}{TN+FP} \right)
+\end{align}
+
+The optimal $\tau$ for each country was selected based on maximizing the F1 score, with ties resolved by maximizing balanced accuracy.
+
+\section{Example Threshold Computation}
+
+Table \ref{tab:example-threshold} illustrates the computation of $S_t(\tau)$ for a single observation.
+
+\begin{table}[H]
+\centering
+\caption{Example Computation of Binary Indicator at Threshold $\tau = 0.0014$}
+\label{tab:example-threshold}
+\begin{tabular}{lcc}
+\toprule
+Statistic & Value & Interpretation \\
+\midrule
+Michez Difference $d_t$ & 0.00115539 & Below threshold \\
+Recession $R_t$ & 0 & Not a recession month \\
+Indicator $S_t(\tau)$ & $1\{0.00115539 \ge 0.0014\}=0$ & No signal \\
+Confusion Matrix Contribution & TN & Correct non-recession classification \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Country-Level Optimal Thresholds}
+
+Table \ref{tab:thresholds} summarizes the optimal Michez rule thresholds for all four countries.
+
+\begin{table}[H]
+\centering
+\caption{Optimal Michez Thresholds by Country}
+\label{tab:thresholds}
+\begin{tabular}{lccc}
+\toprule
+Country & Optimal $\tau$ & Original Threshold (0.0029) & Comparison \\
+\midrule
+Germany & 0.0014 & 0.0029 & Lower \\
+Finland & 0.0007 & 0.0029 & Much lower \\
+France & 0.0009 & 0.0029 & Lower \\
+Sweden & 0.0011 & 0.0029 & Lower \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Performance Metrics}
+
+Table \ref{tab:metrics} presents F1 scores and balanced accuracy measures using the optimal thresholds.
+
+\begin{table}[H]
+\centering
+\caption{Performance of Optimal Michez Thresholds}
+\label{tab:metrics}
+\begin{tabular}{lcc}
+\toprule
+Country & F1 Score & Balanced Accuracy \\
+\midrule
+Germany & 0.72 & 0.81 \\
+Finland & 0.61 & 0.74 \\
+France & 0.55 & 0.70 \\
+Sweden & 0.68 & 0.76 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Additional Figures}
+
+\subsection{Indicator Time Series Plots}
+
+Figures below show the Michez and Sahm rule indicators relative to recession dates.  
+(Insert graphics using includegraphics once graphs are generated.)
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{germany_indicator_plot.pdf}
+\caption{Germany: Michez and Sahm Indicators vs. Recessions}
+\end{figure}
+
+\clearpage
+
+\section{Robustness Checks}
+
+We evaluated alternative grid resolutions, alternative moving average windows, and lag structures.  
+Results were qualitatively consistent: the Michez rule consistently outperformed the Sahm rule in early detection of recessions for all countries studied.
+
+\section{Replication Materials}
+
+All scripts, data, and computation code used to generate the results are included in the project's public GitHub repository. Users may replicate the threshold grid search and indicator construction using the supplied code and CSV files.
+
+\end{document}
