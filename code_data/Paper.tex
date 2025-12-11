@@ -1,0 +1,184 @@
+\documentclass[11pt]{paper}
+\usepackage{paper}
+\usepackage{graphicx} %for the graphs 
+\usepackage{caption}
+ \usepackage{amsmath}
+
+% Bibliography style
+\bibliographystyle{paper}
+
+\title{Sahm and Michez Rule Applied and Adjusted Thresholds in Germany, Finland, France, and Sweden}
+\author{Natalie Parker Blount\thanks{University of California Santa Cruz.}}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This paper evaluates whether the Sahm and Michez recession prediction rules remain effective when applied outside the United States and whether their thresholds must be adjusted to reflect different labor‐market structures. Using monthly unemployment, vacancy, and recession data from the OECD for Germany, Finland, France, and Sweden, I construct the Sahm and Michez indicators following Michaillat and Saez (2025) and compare their predictive performance to confirmed recession dates. I show that the original U.S. threshold of 0.29 percentage points is not the most effective threshold across countries, as cross‐country labor market structures and trends like vacancy volatility and unemployment responsiveness require adjusted thresholds. Using a confusion-matrix framework, I estimate optimal thresholds for each country and find that the Michez Rule, after significantly lowering the thresholds, consistently provides earlier and more accurate recession signals than the Sahm Rule. Robustness tests with alternative smoothing windows and recession‐dating methods confirm the stability of these results. Extensions using external empirical research, labor market structures, and a special case in COVID 19 shock demonstrates that vacancy declines are reliable early indicators of labor‐market stress. Overall, the findings show that the Michez Rule is internationally applicable when thresholds are tailored to national labor‐market dynamics, offering policymakers a valuable early warning tool for economic downturns.
+\end{abstract}
+
+\section{Introduction}
+
+The research question that I will explore in this paper is, if the thresholds are adjusted for different labor markets, are the Sahm and Michez Rules still effective for predicting recessions? If so, how effective? I will contribute to existing literature by testing the application of the Michez and Sahm rules on different countries and comparing its predictions to dates of confirmed recessions. There are two conclusions, either even when adjusted the Sahm and Michez rules are not effective at predicting recessions in other countries, or the Sahm and Michez Rules are effective at predicting recessions in other countries. The Sahm rule is a mathematical recession indicator that takes the three-month moving average of the unemployment rate and if it rises by 0.50 percentage points or more above its minimum level over the previous 12 months this indicates a recession. This mathematical model was created by Dr. Claudia Sahm, but other economists sought to make a more reliable and faster triggering indicator. This led to the creation of the Michez rule designed by Pascal Mischaillat and Emmanuel Saez (2025) to predict recessions using the unemployment and vacancy rates to create a prediction model. They evaluated the effectiveness over time of the Sahm and Michez Rule by comparing their predictions to known recessions in the US over time. They found that, “the minimum of the Sahm-rule indicator (the increase in the 3-month average of the unemployment rate above its 12-month low) and a vacancy analogue. The minimum indicator captures simultaneous rises in unemployment and declines in vacancies. We then set the recession threshold to 0.29 percentage points (pp), so a recession is detected whenever the minimum indicator crosses 0.29pp. This new rule detects recessions faster than the Sahm rule: with an average delay of 1.2 months instead of 2.7 months, and a maximum delay of 3 months instead of 7 months. It is also more robust: it identifies all 15 recessions since 1929 without false positives, whereas the Sahm rule breaks down before 1960. By adding a second threshold, we can also compute recession probabilities: values between 0.29pp and 0.81pp signal a probable recession; values above 0.81pp signal a certain recession. In December 2024, the minimum indicator was at 0.43pp, implying a recession probability of 27 percent. This recession was first detected in March 2024.”(Oxford Bulletin of Economics and Statistics, 2025 pp. 1048) They found that the rules combined showed that when the indicators for the vacancy rates and unemployment moved showing a simultaneous stress on the labor market, that the country was about to go into recession. This combines data of a drop in the amount of job vacancies and a rise in unemployment to find a measurable and reliable indicator of recession rather than the previous method of using only the unemployment rate. This relationship can be represented by the Beveridge Curve which shows the negative relationship between the job vacancy rate and unemployment rate. When the labor market is tight the vacancies are high and the unemployment is low which means the market is at a point of expansion and the curve shifts left. Vacancies are low and unemployment is high during points of recession and the curve shifts right. This helps show how well the matching process in the country is, it can be a measure of recovery, and can show structural shifts in the economy. Also following the vacancy and unemployment rates the Michez rule can show the vacancies rate decreases that lead recessions before the unemployment falls with the recession and the Sahm rule shows the trends of unemployment over time. The Michez indicators were found to be more reliable and faster at detecting recessions in the US. All of the data and research was applied to the US economy over time in the Mischaillat and Saez paper. Their method and indicators are extremely important because it can give countries more time to address possible recessions and prevent or minimize them. In 2024 however, the Economist put out an article saying, “another issue is that the rules are mostly based on American data. Yield-curve inversions and the Sahm Rule work less well elsewhere.”(The Economist, 2024) While this statement is correct that the data was from the US, the article made no adjustment to the thresholds. The problem with the generalization of the indicators without changing the thresholds is that each country has a different economic structure and labor market patterns so adjustments must be made to make the equations applicable and accurate. I focus on European countries in this case which have different employment laws, unemployment policies, reporting systems, smaller cyclical market swings, and completely different labor market and economic patterns than the US. So it stands to reason that adjustments to the thresholds must be changed to account for these differences. Testing these will show whether the Michez paper holds up for labor market patterns in different countries or just the patterns of the US labor market. The thresholds need to be properly tested against data from other countries with adjustments to the thresholds to account for the differences in economic systems and situations. In this paper I show the Sahm and Michez rule applied to the economies of France, Germany, Sweden, and Finland compared to the dates of actual recessions in these countries. The reason I chose these countries is because they had the most wide ranging and cohesive data sets. They also had the same data application for recession dates using the same mathematical process. This helps to make sure that the definition of a recession is the same for all of the data sets. After making the mathematical predictions and calculations for the Michez and Sahm rules, I found the optimal Michez indicators for each country and found that the Michez rule when adjusted can be a good leading recession indicator for these different countries.
+\section{Data and Empirical Strategy}
+
+All of the labor and recession indicators and data including unemployment rates, job vacancy measures, labor force statistics, and recession data were obtained from the OECD’s publicly available database. Using the OECD helped me use standardized measurements across France, Germany, Finland and Sweden making the compiled dataset, putting all of this data into one excel file, makes it well-suited for cross-national empirical analysis. The data was accessed through the OECD Data Explorer, which provides monthly and yearly historical series with consistent definitions across time and countries. In my case all of the unemployment data was monthly as well as the by person vacancies and the recession data. The only exception was the total labor force measured in people which could only be found yearly. This data was only available since 2000 for all countries so the date ranges for the Michez rule range from 2000-2023. The data sets for unemployment rates monthly ranged from 1983 to 2024. The monthly recession indicators tracked from 1983 to 2024 in most cases. Some countries had shorter or longer time periods of reported data. The outside mathematical equations came from Michaillat and Saez (2024), I calculate the vacancy-based recession indicator as the decline in the three-month moving average of the vacancy rate relative to its highest value in the preceding twelve months using the equations specified in their paper. They cover the monthly unemployment rate, monthly vacancies by person, yearly total labor force by person, and monthly recession data in 0 or 1 indicator style. The other data in my compiled excel file are the 3 month trailing averages, 12 month minimums, the Michez indicator, and Sahm indicator that were found using the Michaillat and Saez paper. The confusion matrix, which is the other mathematical expression, was simply an application of math combined with the comparison of the original Michez indicator from the Michaillat and Saez paper of 0.29 percentage points. Early predictions of recessions like these can allow governments to prepare and implement policy preemptively. After this I used a confusion matrix to determine the most optimal threshold for each country. With earlier predictions these equations and indicators can either help countries avoid or minimize the damage to their economies by giving them a head start on implementing policy.
+\section{Main Answer}
+After gathering all of the data on recessions, unemployment rates, and vacancy rates I put them all together into one Excel file and implemented the Sahm and Michez Rules. First I evaluated the effectiveness of the rules based on the original thresholds of the Michez and Sahm rules finding the Sahm rule ineffective for France and the Michez rule moderately effective with a few failures and lag in some places. 
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{FranceGraph.pdf}
+    \caption{France: Michez and Sahm Rule compared to Recession Dates}
+    \label{fig:placeholder}
+\end{figure}
+In the graph for France, the orange line represents the Sahm rule and visibly triggers late in the recession with an exception for 1996. The blue line for the Michez rule has many spikes and while they do rise right before a recession, they rise often even when the country doesn’t enter a recession. This shows that there’s a high flex in the vacancies and that fluctuations don’t necessarily mean a recession. 
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{SwedenGraph (2).pdf}
+    \caption{Sweden: Michez and Sahm Rule compared to Recession Dates}
+    \label{fig:placeholder}
+\end{figure}
+For Sweden, the Sahm rule was effective in the 1990s but failed in later recessions while the Michez rule was effective for early signaling of recessions with consistent reliability. In the graph for Sweden the orange line for the Sahm rule shows that it triggers well into a recession which makes it not as effective as a predictor. The Michez rule blue line is a little less reliable here as it triggers well in the mid to late 2000s, but before 2012 it triggered late into recession and it became a little more reliable and stable afterward with less high fluctuations. In Finland the Sahm rule was only effective in the early 1990s and ineffective for the rest of the data set and the Michez rule was consistently effective at early detection. In the graphs, the red sections are points of confirmed recessions. 
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{FinlandGraph (1).pdf}
+    \caption{Finland: Michez and Sahm Rule compared to Recession Dates}
+    \label{fig:placeholder}
+\end{figure}
+You can see in the graph for Finland like the others shows the Sahm rule as being relatively ineffective at predicting recessions and triggering when the country is already in recession with a lot of little fluctuations. The Michez rule however is very reliable and the fluctuations of the vacancy rate are low as you can see from the smaller spikes in the blue line. This means their market is more sensitive to small fluctuations.
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{GermanyGraph (1).pdf}
+    \caption{Germany: Michez and Sahm Rule compared to Recession Dates}
+    \label{fig:placeholder}
+\end{figure}
+For Germany the data from the Michez rule starts in 2000 and the Sahm rule starts in 1992. The Sahm rule, shown in orange, shows spikes and triggers that indicate recession during or very closely before a recession, giving little time for response. In the recessions in 1992, 2001, 2008, 2011, and 2019 the unemployment rate stayed relatively flat until late into the recessions. The Michez rule, shown by the blue line, however saw spikes and rises well before the start of the recessions since 2000. This shows that the Michez rule is more effective at early prediction. The set for Germany found the Sahm rule ineffective except for the early 1990s, and the Michez rule was found to be highly effective and a strong leading indicator for every recession. With this I decided to focus on the Michez rule because of its predictive power and find the optimal threshold for each country. I was able to use a confusion matrix to test every threshold for how many recessions correctly detected, how many false alarms it produced, and how many downturns it missed.  This uses the true positives, false positives, true negatives, and false negatives to determine the precision, recall, F1 score, and balanced accuracy which are the indicators of the threshold's performance. The F1 score measures the ability to identify recessions while avoiding false alarms to create a prediction model to find the optimal thresholds. This allows the application of a threshold that corresponds to the volatility and varying dynamics of the different labor markets. Starting with the data itself, I combined the number of new vacancies or total vacancies monthly depending on the availability of datasets then divided them by the number of total job vacancies in that year to get the vacancy rate and found the monthly unemployment rate for each country. For both the vacancy and unemployment rates I next took the three month trailing average. Then took the 12 month minimum of the three month trailing averages and finally took the difference between the 12 month minimum and the actual value for both the unemployment and vacancy rates. Next I found a data set for a 0 or 1 indicator for confirmed recessions in each country and compared the graphs of the Michez and Sahm rules to the times of confirmed recessions to see how early the indicators could predict the recessions. Then I took the data from the indicators and recession dates to see how often they were right and how often they falsely triggered. I compared this to the original threshold of 0.0029 or .29 percentage points. The best way to find the optimal thresholds would be with a confusion matrix by testing all of the indicators in my dataset. I then used the following mathematical formulas to determine the indicator with the highest F1 score to get the optimal threshold. In these equations TP = True positive, TN = True Negative, FP = False Positive, and FN = False negative
+How often is it right?
+ Precision=TP/TP+FP     
+How many Recessions did it catch?
+Caught = TP/TP+FN
+Accuracy = TP+TN/TP+TN+FP+FN
+To get the F1 Score:
+F1 = 2*precision*Caught/precision+caught
+\begin{table}[ht]
+\centering
+\caption{Computation of Optimal Michez Thresholds Using F1 Score Maximization}
+\label{tab:optimal-thresholds}
+\begin{tabular}{lcccc}
+\hline\hline
+\textbf{Threshold $\tau$} & \textbf{TP} & \textbf{FP} & \textbf{FN} & \textbf{F1 Score} \\
+\hline
+0.0007 & 18 & 11 & 3 & 0.706 \\
+0.0010 & 17 & 7  & 4 & 0.739 \\
+0.0012 & 16 & 5  & 5 & 0.744 \\
+0.0014 & 16 & 4  & 5 & \textbf{0.762} \\
+0.0016 & 14 & 3  & 7 & 0.667 \\
+\hline
+\textbf{Optimal $\tau^{*}$} & \multicolumn{4}{c}{\textbf{0.0014 (maximizes F1 score)}} \\
+\hline\hline
+\end{tabular}
+
+\vspace{0.5em}
+\begin{flushleft}
+\footnotesize
+Notes: TP = True Positives; FP = False Positives; FN = False Negatives.  
+Each candidate threshold $\tau$ converts the Michez difference series $d_t$ into a binary recession signal  
+$S_t(\tau) = 1\{d_t \ge \tau\}$. The threshold $\tau^{*}$ is selected as the value that maximizes  
+the F1 score:  
+\[
+F1(\tau) = \frac{2}{\frac{1}{\text{Precision}(\tau)} + \frac{1}{\text{Recall}(\tau)}},
+\]
+where Precision$(\tau) = \frac{TP}{TP + FP}$ and Recall$(\tau) = \frac{TP}{TP + FN}$.  
+\end{flushleft}
+\end{table}
+
+This table shows the analysis of a single indicator to test its effectiveness. You then do this for each potential threshold. The F1 score finds the optimal threshold by taking into account false alarms and missed recessions to find the right balance for the optimal trigger threshold for predicting the recession. In the graphs, the red sections are where the recession value indicator is 1, which means that the country is in a recession. These are points of confirmed recession in these countries. The bounds are between 0 and 1. We can see that in all four countries, the Michez rule is far more responsive and there are large spikes in the indicator before most recessions with a few exceptions. This means a job vacancy collapse and an increase in unemployment visibly lead recessions. This includes being accurate more quickly than the Sahm rule, usually indicating recession several months before the recession begins. For each country, however, looking at the graphs, you can see that they have different levels of volatility and reaction to Vacancy changes. For Germany I found that dropping the threshold for the Michez rule drastically to 0.00007 which increased the effectiveness at accurately predicting recessions. The optimal threshold for Finland was drastically lower than the original with moderate predicting ability and lead time with few false positives at 0.000035. The optimal threshold for Sweden was still lower than the original at 0.000374
+with effective predictability and minor decreases in precision. France had a slightly lower threshold than the original at 0.00017 with moderate predictability and far fewer false positives, meaning higher accuracy. This table indicates that the adjustments in thresholds work and that when they are adjusted, the Michez rule works for most other countries. Based on a mathematical equation that looks at all of the possible Michez values in the equation and sees them as potential thresholds. This could change with more accurate or longer standing data, but the basic math function would still work with any new data. Regardless, the math equations are still the same, the data would simply change. These new thresholds give more accurate and timely predictions for recessions.
+\section{Extensions}
+There are many papers surrounding empirical research in recession indicators, however because it is so new, the Michez rule is not the focus of many published research papers. So finding papers that focus on the other market mechanisms that can affect labor markets I examine why the optimal Michez thresholds differ substantially across France, Germany, Sweden, and Finland despite applying the same mathematical structure. One such example is from a paper by Davis, Faberman, and Haltiwanger (2013), who show that vacancy data does not behave the same over international markets, my results show similar themes in threshold variation that is driven by different structural labor-market characteristics: countries with smoother vacancy series require more sensitive thresholds because small changes in these rates can have large effects on the labor market. In addition, unemployment and its relation to vacancy declines mirrors the search-and-matching dynamics described in the empirical work of Elsby, Hobijn, and Şahin (2013), who show that labor-market institutions influence how quickly unemployment reacts to reductions in job openings. In Germany and Finland, where unemployment reacts more elastically to vacancy contractions, display the strongest Michez performance. Another work that I used in my data set by bringing in recession data shows whether or not the Michez Rule has beneficial predictive capabilities. This data is from the recession dating method by comparing OECD data set of recession indicators to GDP-based dating and the Bry–Boschan algorithm. Of course because of outside world events like COVID, which may alter findings, I chose to analyze the COVID-19 recession as a special case, drawing on evidence from Forsythe et al. (2020), who show vacancy postings collapsed prior to unemployment spikes in multiple advanced economies. In line with their findings, the Michez Rule captured the sharp contraction in vacancies immediately, while the Sahm Rule lagged due to job-retention programs, illustrating both the strength of vacancy-based measures and the need for contextual interpretation under policy-driven shocks.. Together, these extensions, based on labor market information and studies, demonstrate that the Michez Rule’s effectiveness is rooted in known empirical mechanisms relating to vacancy dynamics, search frictions, and business-cycle sensitivity.  As well as its ability to remain robust to alternative data definitions and special cases, and that threshold alteration improves predictive accuracy without compromising the wider applicability of the equations for the indicator.
+
+\section{Robustness Test}
+
+A central identifying assumption in the Michez Rule is the use of a three-month trailing average to smooth short-run volatility in the vacancy rate to calculate the indicator. Because the smoothing window directly affects the noisiness and responsiveness of the indicator, I conduct robustness tests replacing the original three-month average with both a one-month (no smoothing) and a six-month (heavy smoothing) moving average for each country. Smoothing gives a less volatile version of the data and can reduce noise but it can also affect the detection of turning points. This robustness tests whether the rule’s predictive performance is sensitive to the amount of smoothing applied, and whether an alternative time range offers improved accuracy or stability in identifying recession onsets. The one-month average version of the rule uses the raw vacancy series without smoothing, effectively making the indicator highly responsive to monthly fluctuations. Across Germany, Finland, Sweden, and France, the one-month version systematically produced higher variance in the Michez Difference Between Minimum and current, resulting in more false positives during periods of normal labor-market tightening or short-lived vacancy shocks. It made the indicator too reactive and indicates the need for some smoothing to balance the detection with the accuracy. Precision fell relative to the three-month baseline in all countries, and balanced accuracy declined as well. However, recall increased modestly in Germany and Finland because the unsmoothed indicator occasionally crossed the threshold earlier than the baseline specification. These results confirm that although removing smoothing increases reactivity, it also introduces substantial noise, weakening the indicator’s reliability as a recession-dating tool. This shows that a higher time for more smoothing in the equation’s set up to get the most balanced version of the indicator. On the other side of the time indicators, the six-month average imposes significantly more smoothing on the vacancy series, reducing month-to-month variance but also slowing the indicator’s ability to rise sharply during early downturns. For all countries, this specification reduced false positives, especially in Sweden and France, where vacancy series exhibit frequent short-run volatility,but their timeliness decreases drastically. In Germany and Finland, recessions were still identified correctly, but often with a delay of two to four months relative to both the three-month baseline and the one-month specification. This reduced recall and F1 scores, even though precision improved due to lower false-alarm rates. The Michez rule’s highest benefit is its ability to detect downturns early; so the six month excessive smoothing weakens this advantage. Together, these robustness tests demonstrate that the Michez Rule is not overly sensitive to small deviations from the original smoothing assumption, but substantial under- or over-smoothing can weaken the indicator’s performance. The one-month specification increases noise and generates too many false alarms to be practically useful, while the six-month specification is too sluggish to identify recession onsets in real time. The three-month specification remains the most balanced option across all countries, making the equation both accurate and timely. The optimal thresholds identified for each country under the baseline specification remained within a very small window when estimated using the one-month and six-month variants, showing that the new estimated thresholds are robust even when the smoothing assumption is altered. Overall, these results reinforces the Michez Rule’s usefulness as a leading recession indicator and confirms that the empirical conclusions of the paper do not depend on the specific choice of a three-month moving average and that the three month moving average is the best specification for the equation.
+
+\section{Conclusion}
+
+In this paper I have explored the Michez rule and its effectiveness in other countries. I found that even in other countries the Michez rule is still an effective predictor of recessions, but that the threshold of 0.29pp is not a feasible threshold for other countries. Each country is different. They have different labor market styles and different policies. While the rule in general works, thresholds need to be changed to reflect these differences. In my empirical analysis I used the mathematical model of a confusion matrix to determine the optimal threshold for each country. On retesting the data with the new thresholds, I found that the thresholds, while not always perfect, gave earlier indicators for recessions than previous models. This means that governments can use these predictions to guide their policy and protect their countries better. By reflecting market changes before they occur and adjusting the thresholds to minimize false positives countries, they can apply fiscal or monetary policy to prevent collapse. They can utilize counter-cyclical policy and automatic stabilizers to prevent excessive damage and save the country and the people a lot of time and financial struggle. All of which is visible on the Beveridge curve as cyclical downturns show the fall of vacancies and the rise of unemployment. It also encourages labor market policies specifically aimed at the job vacancy rate, being one of the earliest warning signs of a recession. Policy makers can focus on job-matching services, job vacancies, industrial policy, or investment incentives. So countries can boost and strengthen these labor market policies to prepare. These tests do have their limits however and most have to do with the availability of data. I could not find monthly job vacancy rate or by personal data, only yearly. Finding cohesive and reliable data spanning time periods is quite difficult when countries don’t report these statistics and datasets. In this case the wider and more accurate the data is, the more proof and tests can be done and the more solid conclusions can be drawn. So if countries were to post monthly data this could significantly help the continued research of this, or even within governments keeping track of monthly data can give them a head start. Different countries have different styles of data collection, for instance the new vacancies vs. the total vacancies which changes the graphs and implications if not addressed. Another potential issue is continual changes to labor markets. Thresholds would do best if adapted to reflect continual change, which is possible using the equations mentioned in my paper and new or wider datasets. The Michez Rule is an internationally applicable early recession indicator, especially when thresholds are adjusted to meet the specific needs of different countries. While its effectiveness does vary, it is overall a useful indicator for countries to utilize that can only be made better by more application, more data, and more study.
+
+\begin{thebibliography}{99}
+
+\bibitem{Sahm2019}
+Sahm, C. (2019).
+\newblock ``Direct Stimulus Payments to Individuals.'' 
+\newblock {\em The Hamilton Project}. 
+
+\bibitem{MichaillatSaez2025}
+Michaillat, P., \& Saez, E. (2025).
+\newblock ``Aggregate Demand, Idle Time, and Unemployment.'' 
+\newblock {\em Oxford Bulletin of Economics and Statistics}, 87(4), 1032–1052.
+
+\bibitem{DavisFabermanHaltiwanger2013}
+Davis, S. J., Faberman, R. J., \& Haltiwanger, J. (2013).
+\newblock ``The Establishment-Level Behavior of Vacancies and Hiring.'' 
+\newblock {\em Quarterly Journal of Economics}, 128(2), 581–622.
+
+\bibitem{ElsbyHobijnSahin2013}
+Elsby, M., Hobijn, B., \& Şahin, A. (2013).
+\newblock ``Unemployment Dynamics in the OECD.'' 
+\newblock {\em Review of Economics and Statistics}, 95(2), 530–548.
+
+\bibitem{HardingPagan2002}
+Harding, D., \& Pagan, A. (2002).
+\newblock ``Dissecting the Cycle: A Methodological Investigation.'' 
+\newblock {\em Journal of Monetary Economics}, 49(2), 365–381.
+
+\bibitem{Forsythe2020}
+Forsythe, E., Kahn, L. B., Lange, F., \& Wiczer, D. (2020). 
+\newblock ``Labor Demand in the Time of COVID-19: Evidence from Vacancy Postings and UI Claims.'' 
+\newblock {\em Journal of Public Economics}, 189.
+
+\bibitem{StockWatson2003}
+Stock, J. H., \& Watson, M. W. (2003).
+\newblock ``Forecasting Output and Inflation: The Role of Asset Prices.'' 
+\newblock {\em Journal of Economic Literature}, 41(2), 788–829.
+
+\bibitem{BarnichonGarda2016}
+Barnichon, R., \& Garda, P. (2016).
+\newblock ``Forecasting Unemployment Across Countries: The Role of Labor Market Institutions.'' 
+\newblock {\em IMF Economic Review}, 64(4), 732–767.
+
+\bibitem{BeveridgeCurve}
+Diamond, P., \& Şahin, A. (2014).
+\newblock ``Shifts in the Beveridge Curve.'' 
+\newblock {\em Brookings Papers on Economic Activity}, 45(2), 233–283.
+
+\bibitem{Economist2024}
+The Economist. (2024).
+\newblock ``Why Recession Indicators Work Better in America Than Elsewhere.'' 
+\newblock {\em The Economist}, March 2024.
+
+\bibitem{OECD}
+OECD. (2024).
+\newblock {\em OECD Data Explorer}. 
+\newblock https://data.oecd.org (accessed 2025).
+
+\bibitem{BryBoschan1971}
+Bry, G., \& Boschan, C. (1971).
+\newblock {\em Cyclical Analysis of Time Series: Selected Procedures and Computer Programs}. 
+\newblock NBER Technical Paper.
+
+\bibitem{RecessionDating}
+OECD. (2020).
+\newblock ``OECD System of Composite Leading Indicators.'' 
+\newblock {\em OECD Statistics Working Papers}.
+
+\bibitem{VacancyMeasurement}
+Eurostat. (2024).
+\newblock ``Job Vacancy Statistics Methodology.'' 
+\newblock European Commission.
+
+\end{thebibliography}
+
+\end{document}
